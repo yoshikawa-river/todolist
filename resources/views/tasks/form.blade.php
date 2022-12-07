@@ -12,12 +12,12 @@
                     @csrf
                     <div>
                         <p>{{ __('Task Name') }}</p>
-                        <input type="text" name="name" value="{{ old('name') }}">
+                        <input type="text" name="name" value="{{ old('name') }}" required>
                     </div>
 
                     <div>
                         <p>{{ __('Task Description') }}</p>
-                        <textarea name="description" id="" cols="30" rows="10">{{ old('description') }}</textarea>
+                        <textarea name="description" id="" cols="30" rows="10" required>{{ old('description') }}</textarea>
                     </div>
 
                     <div>
@@ -40,7 +40,7 @@
 
                     <div>
                         <p>{{ __('Due Date') }}</p>
-                        <input type="date" name="due_date" value="{{ old('due_date') }}">
+                        <input type="date" name="due_date" value="{{ old('due_date') }}" required>
                     </div>
 
                     <input type="submit" name="confirm" value="確認">
