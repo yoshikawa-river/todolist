@@ -22,7 +22,15 @@
 
                     <div>
                         <p>{{ __('Priority') }}</p>
-                        <input type="checkbox" name="priority" value="{{ old('priority') }}">
+                        {{ App\Enums\Priority::HIGH->label() }}
+                        <input type="radio" name="priority" value="{{ App\Enums\Priority::HIGH->value }}"
+                            @checked(old('priority') == App\Enums\Priority::HIGH->value)>
+                        {{ App\Enums\Priority::MIDDLE->label() }}
+                        <input type="radio" name="priority" value="{{ App\Enums\Priority::MIDDLE->value }}"
+                            @checked(old('priority') == App\Enums\Priority::MIDDLE->value)>
+                        {{ App\Enums\Priority::LOW->label() }}
+                        <input type="radio" name="priority" value="{{ App\Enums\Priority::LOW->value }}"
+                            @checked(old('priority') == App\Enums\Priority::LOW->value)>
                     </div>
 
                     <div>
