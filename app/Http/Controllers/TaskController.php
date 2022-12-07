@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
+use App\Services\TaskService;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    protected $task_service;
+
+    public function __construct(TaskService $task)
+    {
+        $this->task_service = $task;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,6 +50,7 @@ class TaskController extends Controller
         }
 
         if ($request->isCreate()) {
+            $this->task_service->createTask($params);
             return to_route('task.index');
         }
 
