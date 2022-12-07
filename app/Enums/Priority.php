@@ -19,4 +19,14 @@ enum Priority: int
             Priority::LOW => '低',
         };
     }
+
+    public static function find($key)
+    {
+        return match((int)$key)
+        {
+            1 => self::HIGH->label(),
+            2 => self::MIDDLE->label(),
+            3 => self::LOW->label(),
+        };
+    }
 }
