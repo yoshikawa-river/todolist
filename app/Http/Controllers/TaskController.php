@@ -35,7 +35,7 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        $params = $request->input();
+        $params = collect($request->input());
         
         if ($request->isBack()) {
             return to_route('task.create')->withInput();
