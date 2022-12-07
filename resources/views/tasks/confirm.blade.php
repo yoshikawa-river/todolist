@@ -24,7 +24,7 @@
 
                     <div>
                         <p>{{ __('Priority') }}</p>
-                        <div>{{ $params->get('priority') }}</div>
+                        <div>{{ App\Enums\Priority::find($params->get('priority')) }}</div>
                         <input type="hidden" name="priority" value="{{ $params->get('priority') }}">
                     </div>
 
