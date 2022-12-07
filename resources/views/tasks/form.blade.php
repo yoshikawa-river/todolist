@@ -13,11 +13,17 @@
                     <div>
                         <p>{{ __('Task Name') }}</p>
                         <input type="text" name="name" value="{{ old('name') }}" required>
+                        @error('name')
+                            <div>{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div>
                         <p>{{ __('Task Description') }}</p>
                         <textarea name="description" id="" cols="30" rows="10" required>{{ old('description') }}</textarea>
+                        @error('description')
+                            <div>{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div>
@@ -31,16 +37,25 @@
                         {{ App\Enums\Priority::LOW->label() }}
                         <input type="radio" name="priority" value="{{ App\Enums\Priority::LOW->value }}"
                             @checked(old('priority') == App\Enums\Priority::LOW->value)>
+                        @error('priority')
+                            <div>{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div>
                         <p>{{ __('Public') }}</p>
                         <input type="checkbox" name="public" value="1" @checked(old('public') == 1)>
+                        @error('public')
+                            <div>{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div>
                         <p>{{ __('Due Date') }}</p>
                         <input type="date" name="due_date" value="{{ old('due_date') }}" required>
+                        @error('due_date')
+                            <div>{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <input type="submit" name="confirm" value="確認">
