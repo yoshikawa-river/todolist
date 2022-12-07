@@ -13,13 +13,13 @@
                     <div>
                         <p>{{ __('Task Name') }}</p>
                         <div>{{ $params->get('name') }}</div>
-                        <input type="hidden" name="name" value="{{ $params->get('name') }}">
+                        <input type="hidden" name="task_name" value="{{ $params->get('task_name') }}">
                     </div>
 
                     <div>
                         <p>{{ __('Task Description') }}</p>
                         <div>{{ $params->get('description') }}</div>
-                        <input type="hidden" name="description" value="{{ $params->get('description') }}">
+                        <input type="hidden" name="task_description" value="{{ $params->get('task_description') }}">
                     </div>
 
                     <div>

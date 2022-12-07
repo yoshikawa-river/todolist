@@ -12,7 +12,7 @@
                     @csrf
                     <div>
                         <p>{{ __('Task Name') }}</p>
-                        <input type="text" name="name" value="{{ old('name') }}" required>
+                        <input type="text" name="task_name" value="{{ old('task_name') }}" required>
                         @error('name')
                             <div>{{ $message }}</div>
                         @enderror
@@ -20,7 +20,7 @@
 
                     <div>
                         <p>{{ __('Task Description') }}</p>
-                        <textarea name="description" id="" cols="30" rows="10" required>{{ old('description') }}</textarea>
+                        <textarea name="task_description" id="" cols="30" rows="10" required>{{ old('task_description') }}</textarea>
                         @error('description')
                             <div>{{ $message }}</div>
                         @enderror

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\Priority;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
@@ -27,11 +28,11 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => [
+           'task_name' => [
                'required',
                'max:20'       
            ],
-           'description' => [
+           'task_description' => [
                'required',
                'max:10000'
            ],
@@ -56,6 +57,10 @@ class TaskRequest extends FormRequest
                 'public' => 0,
             ]);
         }
+
+        $this->merge([
+            'user_id' => Auth::id()
+        ]);
     }
 
     public function isBack() {
