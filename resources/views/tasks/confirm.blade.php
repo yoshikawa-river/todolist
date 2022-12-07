@@ -12,32 +12,32 @@
                     @csrf
                     <div>
                         <p>{{ __('Task Name') }}</p>
-                        <div>{{ $params->name }}</div>
-                        <input type="hidden" name="name" value="{{ $params->name }}">
+                        <div>{{ $params->get('name') }}</div>
+                        <input type="hidden" name="name" value="{{ $params->get('name') }}">
                     </div>
 
                     <div>
                         <p>{{ __('Task Description') }}</p>
-                        <div>{{ $params->description }}</div>
-                        <input type="hidden" name="description" value="{{ $params->description }}">
+                        <div>{{ $params->get('description') }}</div>
+                        <input type="hidden" name="description" value="{{ $params->get('description') }}">
                     </div>
 
                     <div>
                         <p>{{ __('Priority') }}</p>
-                        <div>{{ $params->priority }}</div>
-                        <input type="hidden" name="priority" value="{{ $params->priority }}">
+                        <div>{{ $params->get('priority') }}</div>
+                        <input type="hidden" name="priority" value="{{ $params->get('priority') }}">
                     </div>
 
                     <div>
                         <p>{{ __('Public') }}</p>
-                        <div>{{ $params->public }}</div>
-                        <input type="hidden" name="public" value="{{ $params->public }}">
+                        <div>{{ $params->get('public') }}</div>
+                        <input type="hidden" name="public" value="{{ $params->get('public') }}">
                     </div>
 
                     <div>
                         <p>{{ __('Due Date') }}</p>
-                        <div>{{ $params->due_date }}</div>
-                        <input type="hidden" name="due_date" value="{{ $params->due_date }}">
+                        <div>{{ $params->get('due_date') }}</div>
+                        <input type="hidden" name="due_date" value="{{ $params->get('due_date') }}">
                     </div>
 
                     <input type="submit" name="back" value="戻る">
