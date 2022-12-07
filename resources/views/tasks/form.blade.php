@@ -35,7 +35,7 @@
 
                     <div>
                         <p>{{ __('Public') }}</p>
-                        <input type="checkbox" name="public" value="{{ old('public') }}">
+                        <input type="checkbox" name="public" value="1" @checked(old('public') == 1)>
                     </div>
 
                     <div>
