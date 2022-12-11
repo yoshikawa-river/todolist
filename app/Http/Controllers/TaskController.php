@@ -34,7 +34,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('tasks.form');   
+        return view('tasks.create');   
     }
 
     /**
@@ -56,7 +56,7 @@ class TaskController extends Controller
             return to_route('task.index');
         }
 
-        return view('tasks.confirm', compact('params'));
+        return view('tasks.create_confirm', compact('params'));
     }
 
     /**
