@@ -12,8 +12,10 @@ class Task extends Model
     protected $fillable = [
         'task_name',
         'task_description',
+        'user_id',
         'priority',
         'public',
+        'due_date'
     ];
 
     protected $casts = [
@@ -27,5 +29,14 @@ class Task extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'task_tag', 'task_id', 'tag_id');
+    }
+
+    public function fetchAllTasks() {
+        return $this->all();
     }
 }
