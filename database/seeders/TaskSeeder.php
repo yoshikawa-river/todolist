@@ -21,13 +21,14 @@ class TaskSeeder extends Seeder
         DB::table('tasks')->truncate();
         
         DB::table('tasks')->insert([
-            'task_name' => 'タスク一つ目',
-            'task_description' => 'タスク説明',
+            'task_name' => '管理者用タスク',
+            'task_description' => '管理者のタスクです。',
+            'user_id' => 1,
             'priority' => 1,
             'public' => true,
             'due_date' => new Carbon('2022-12-06')
         ]);
 
-        Task::factory()->count(10)->create();
+        // Task::factory()->count(10)->create();
     }
 }
