@@ -17,11 +17,12 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            'task_name' => fake()->sentence(rand(1, 3)),
-            'task_description' => fake()->realText(),
+            'task_name' => fake()->realText(10),
+            'task_description' => fake()->realText(50),
             'priority' => rand(1, 3),
             'public' => true,
-            'due_date' => fake()->dateTimeBetween('now', '+4 week')
+            'due_date' => fake()->dateTimeBetween('now', '+4 week'),
+            'created_at' => fake()->dateTimeBetween('-20 days', 'now')
         ];
     }
 }
