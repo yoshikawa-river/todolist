@@ -15,4 +15,11 @@ class TaskService
             $task->create($params->toArray());
         });
     }
+
+    public function updateTask(Collection $params, Task $task)
+    {
+        DB::transaction(function () use($params, $task) {
+            $task->fill($params->toArray())->save();
+        });
+    }
 }
