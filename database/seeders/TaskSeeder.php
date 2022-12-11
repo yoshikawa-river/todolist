@@ -26,7 +26,8 @@ class TaskSeeder extends Seeder
             'user_id' => 1,
             'priority' => 1,
             'public' => true,
-            'due_date' => new Carbon('2022-12-06')
+            'due_date' => new Carbon('2022-12-31'),
+            'created_at' => Carbon::now(),
         ]);
 
         // Task::factory()->count(10)->create();
