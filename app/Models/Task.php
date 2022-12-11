@@ -35,4 +35,8 @@ class Task extends Model
     {
         return $this->belongsToMany(Tag::class, 'task_tag', 'task_id', 'tag_id');
     }
+
+    public function fetchAllTasks() {
+        return $this->all();
+    }
 }

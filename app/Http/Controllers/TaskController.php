@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
+use App\Models\Task;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,10 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Task $task)
     {
-        //
+        $tasks = $task->fetchAllTasks();
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -63,9 +65,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        //
+        return view('tasks.detail', compact('task'));
     }
 
     /**
