@@ -16,6 +16,11 @@
                             <p>{{ __('Task Create Date') }}</p>
                             <div>{{ $task->created_at->format('Y-m-d') }}</div>
                         </div>
+
+                        <div>
+                            <p>{{ __('Task Author') }}</p>
+                            <div>{{ $task->user->name }}</div>
+                        </div>
                     </div>
                     <div>
                         <p>{{ __('Task Description') }}</p>
