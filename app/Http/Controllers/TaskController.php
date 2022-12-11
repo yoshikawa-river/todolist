@@ -34,7 +34,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('tasks.form');   
+        return view('tasks.create');   
     }
 
     /**
@@ -56,7 +56,7 @@ class TaskController extends Controller
             return to_route('task.index');
         }
 
-        return view('tasks.confirm', compact('params'));
+        return view('tasks.create_confirm', compact('params'));
     }
 
     /**
@@ -76,9 +76,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -88,9 +88,20 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TaskRequest $request, Task $task)
     {
-        //
+        $params = collect($request->input());
+        
+        if ($request->isBack()) {
+            return to_route('task.edit')->withInput();
+        }
+
+        if ($request->isCreate()) {
+            $this->task_service->updateTask($params, $task);
+            return to_route('task.show', $task);
+        }
+
+        return view('tasks.edit_confirm', compact('params', 'task')); 
     }
 
     /**
