@@ -13,12 +13,14 @@
                         <p>{{ __('Task Name') }}</p>|
                         <p>{{ __('Task Create Date') }}</p>|
                         <p>{{ __('Task Priority') }}</p>|
+                        <p>{{ __('Task Author') }}</p>|
                     </div>
                     @foreach ($tasks as $task)
                         <div>
                             <a href="{{ route('task.show', ['task' => $task->id]) }}">{{ $task->task_name }}</a>
                             {{ $task->created_at->format('Y-m-d') }}
                             {{ \App\Enums\Priority::find($task->priority) }}
+                            {{ $task->user->name }}
                         </div>
                     @endforeach
                 </div>

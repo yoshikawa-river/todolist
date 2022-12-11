@@ -37,6 +37,6 @@ class Task extends Model
     }
 
     public function fetchAllTasks() {
-        return $this->all();
+        return $this->with('user')->get();
     }
 }
