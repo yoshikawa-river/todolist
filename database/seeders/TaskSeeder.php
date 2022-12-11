@@ -18,7 +18,7 @@ class TaskSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tasks')->truncate();
+        // DB::table('tasks')->truncate();
         
         DB::table('tasks')->insert([
             'task_name' => '管理者用タスク',
