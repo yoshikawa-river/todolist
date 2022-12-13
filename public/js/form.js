@@ -4,6 +4,7 @@ $(function () {
         template.children('.add_tag, .remove_tag').toggleClass('hidden');
 
         let input = template.find('input');
+        input.val('');
         const prev_tag_number = $('.tag_content').last().find('input').attr('name').match(/\[(.+)\]/)[1];
         let new_tag_name = input.attr('name').replace(/(\[\d+\])/, `[${Number(prev_tag_number) + 1}]`);
         input.attr('name', new_tag_name);
