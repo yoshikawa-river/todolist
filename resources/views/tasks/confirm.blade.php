@@ -41,9 +41,9 @@
                     <p>{{ __('Tags') }}</p>
                     <div>
                         @foreach ($params->get('tags') as $tag)
-                            <p>{{ $tag }}</p>
+                            <p>{{ $tag['tag_name'] }}</p>
                             <input type="hidden" name="tags[{{ $loop->index }}][tag_name]"
-                                value="{{ $tag }}">
+                                value="{{ $tag['tag_name'] }}">
                         @endforeach
                     </div>
                 </div>
