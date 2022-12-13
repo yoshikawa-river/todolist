@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <form action="{{ $route }}" method="POST">
-                @if ($task->id)
+                @if ($params->get('id'))
                     @method('PATCH')
                 @endif
 
@@ -35,6 +35,16 @@
                     <p>{{ __('Due Date') }}</p>
                     <div>{{ $params->get('due_date') }}</div>
                     <input type="hidden" name="due_date" value="{{ $params->get('due_date') }}">
+                </div>
+
+                <div>
+                    <p>{{ __('Tags') }}</p>
+                    <div>
+                        @foreach ($params->get('tags') as $tag)
+                            <p>{{ $tag }}</p>
+                            <input type="hidden" name="tags[{{ $loop->index }}]" value="{{ $tag }}">
+                        @endforeach
+                    </div>
                 </div>
 
                 <input type="submit" name="back" value="戻る">
