@@ -46,6 +46,10 @@ class TaskRequest extends FormRequest
            'due_date' => [
                'required',
                'date'
+           ],
+           'tags.*' => [
+               'nullable',
+               'max:20'
            ]
         ];
     }
