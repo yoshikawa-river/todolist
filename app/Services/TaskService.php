@@ -12,7 +12,11 @@ class TaskService
     {
         DB::transaction(function () use($params) {
             $task = new Task();
-            $task->create($params->toArray());
+            $task = $task->create($params->toArray());
+
+            $tags = $params->get('tags');
+            $task->tags()->createMany($tags);
+
         });
     }
 
@@ -20,6 +24,9 @@ class TaskService
     {
         DB::transaction(function () use($params, $task) {
             $task->fill($params->toArray())->save();
+
+            $tags = $params->get('tags');
+            $task->tags()->fill($tags)->save();
         });
     }
 }
