@@ -56,6 +56,32 @@
                     @enderror
                 </div>
 
+                <div>
+                    <p>{{ __('Task Tag') }}</p>
+
+                    <div id="tag">
+                        @if (old('tag', $task->tags ?? null))
+                            @foreach ($task->tags as $tag)
+                                <div class="flex tag_content">
+                                    <input type="text" name="tag[{{ $loop->index }}]"
+                                        value="{{ old('tag', $tag ?? null) }}">
+                                    @if ($loop->first)
+                                        <div class="add_tag">追加</div>
+                                    @else
+                                        <div class="remove_tag">削除</div>
+                                    @endif
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="flex tag_content">
+                                <input type="text" name="tag[0]">
+                                <div class="add_tag">追加</div>
+                                <div class="remove_tag hidden">削除</div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
                 <input type="submit" name="confirm" value="確認">
             </form>
         </div>
