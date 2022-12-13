@@ -38,6 +38,12 @@
                         <p>{{ __('Task Due Date') }}</p>
                         <div>{{ $task->due_date->format('Y-m-d') }}</div>
                     </div>
+                    <div>
+                        <p>{{ __('Task Tags') }}</p>
+                        @foreach ($task->tags as $tag)
+                            <div>{{ $tag->tag_name }}</div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
