@@ -42,7 +42,8 @@
                     <div>
                         @foreach ($params->get('tags') as $tag)
                             <p>{{ $tag }}</p>
-                            <input type="hidden" name="tags[{{ $loop->index }}]" value="{{ $tag }}">
+                            <input type="hidden" name="tags[{{ $loop->index }}][tag_name]"
+                                value="{{ $tag }}">
                         @endforeach
                     </div>
                 </div>

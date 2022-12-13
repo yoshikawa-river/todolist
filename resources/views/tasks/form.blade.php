@@ -63,7 +63,7 @@
                         @if (old('tags', $task->tags ?? null))
                             @foreach ($task->tags as $tag)
                                 <div class="flex tag_content">
-                                    <input type="text" name="tags[{{ $loop->index }}]"
+                                    <input type="text" name="tags[{{ $loop->index }}][tag_name]"
                                         value="{{ old('tags', $tag ?? null) }}">
                                     @if ($loop->first)
                                         <div class="add_tag">追加</div>
@@ -74,7 +74,7 @@
                             @endforeach
                         @else
                             <div class="flex tag_content">
-                                <input type="text" name="tags[0]">
+                                <input type="text" name="tags[0][tag_name]">
                                 <div class="add_tag">追加</div>
                                 <div class="remove_tag hidden">削除</div>
                             </div>
