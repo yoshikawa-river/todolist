@@ -14,6 +14,7 @@
                         <p>{{ __('Task Create Date') }}</p>|
                         <p>{{ __('Task Priority') }}</p>|
                         <p>{{ __('Task Author') }}</p>|
+                        <p>{{ __('Task Tags') }}</p>
                     </div>
                     @foreach ($tasks as $task)
                         <div>
@@ -21,6 +22,10 @@
                             {{ $task->created_at->format('Y-m-d') }}
                             {{ \App\Enums\Priority::find($task->priority) }}
                             {{ $task->user->name }}
+                            |
+                            @foreach ($task->tags as $tag)
+                                {{ $tag->tag_name }}
+                            @endforeach
                         </div>
                     @endforeach
                 </div>

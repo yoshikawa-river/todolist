@@ -1,10 +1,10 @@
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <form action="{{ $route }}" method="POST">
-                @if ($task->id)
+            <form action="{{ $route }}" method="post">
+                @isset($task->id)
                     @method('PATCH')
-                @endif
+                @endisset
 
                 @csrf
                 <div>
@@ -35,6 +35,19 @@
                     <p>{{ __('Due Date') }}</p>
                     <div>{{ $params->get('due_date') }}</div>
                     <input type="hidden" name="due_date" value="{{ $params->get('due_date') }}">
+                </div>
+
+                <div>
+                    <p>{{ __('Tags') }}</p>
+                    <div>
+                        @foreach ($params->get('tags') as $tag)
+                            <p>{{ $tag['tag_name'] }}</p>
+                            <input type="hidden" name="tags[{{ $loop->index }}][tag_name]"
+                                value="{{ $tag['tag_name'] }}">
+                            <input type="hidden" name="tags[{{ $loop->index }}][id]"
+                                value="{{ $tag['id'] ?? null }}">
+                        @endforeach
+                    </div>
                 </div>
 
                 <input type="submit" name="back" value="戻る">

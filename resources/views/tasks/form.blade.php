@@ -1,7 +1,7 @@
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <form action="{{ $route }}" method="POST">
+            <form action="{{ $route }}" method="post">
                 @if ($task->id ?? null)
                     @method('PATCH')
                 @endif
@@ -54,6 +54,35 @@
                     @error('due_date')
                         <div>{{ $message }}</div>
                     @enderror
+                </div>
+
+                @php
+                    $tags = collect(old('tags', $task->tags ?? []))->toArray();
+                @endphp
+
+                <div>
+                    <p>{{ __('Task Tag') }}</p>
+                    <div id="tag">
+                        @if (empty($tags))
+                            <div class="flex tag_content">
+                                <input type="text" name="tags[0][tag_name]">
+                                <input type="hidden" name="tags[0][id]" value="null">
+                                <div class="add_tag">追加</div>
+                                <div class="remove_tag hidden">削除</div>
+                            </div>
+                        @else
+                            @foreach ($tags as $tag)
+                                <div class="flex tag_content">
+                                    <input type="text" name="tags[{{ $loop->index }}][tag_name]"
+                                        value="{{ old("tags[$loop->index][tag_name]", $tag['tag_name']) }}">
+                                    <input type="hidden" name="tags[{{ $loop->index }}][id]"
+                                        value="{{ old("tags[$loop->index][id]", $tag['id'] ?? null) }}">
+                                    <div class="add_tag @if (!$loop->first) hidden @endif">追加</div>
+                                    <div class="remove_tag @if ($loop->first) hidden @endif">削除</div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
 
                 <input type="submit" name="confirm" value="確認">

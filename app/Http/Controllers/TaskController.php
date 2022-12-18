@@ -94,7 +94,7 @@ class TaskController extends Controller
         $params = collect($request->input());
         
         if ($request->isBack()) {
-            return to_route('task.edit')->withInput();
+            return to_route('task.edit', $task)->withInput();
         }
 
         if ($request->isCreate()) {
