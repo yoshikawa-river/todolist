@@ -26,8 +26,6 @@ class TaskService
         DB::transaction(function () use($params, $task) {
             $task->fill($params->toArray())->save();
 
-            $param_tags = $params->get('tags');
-            
             foreach ($params->get('tags') as $value) {
                 if (is_null($value['id'])) {
                     unset($value['id']);
