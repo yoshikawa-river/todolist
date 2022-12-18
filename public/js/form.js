@@ -3,11 +3,11 @@ $(function () {
         let template = $(this).closest('.tag_content').clone();
         template.children('.add_tag, .remove_tag').toggleClass('hidden');
 
-        let input = template.find('input');
-        input.val('');
-        const prev_tag_number = $('.tag_content').last().find('input').attr('name').match(/(?<=\[).*?(?=\])/)[0];
+        template.find('input').val('');
+
+        let input = template.find('input[name*=name]');
+        const prev_tag_number = $('.tag_content').last().find('input[name*=name]').attr('name').match(/(?<=\[).*?(?=\])/)[0];
         let new_tag_name = input.attr('name').replace(/(\[\d+\])/, `[${Number(prev_tag_number) + 1}]`);
-        console.log(new_tag_name);
         input.attr('name', new_tag_name);
 
         $('#tag').append(template);
